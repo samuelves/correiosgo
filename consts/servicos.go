@@ -1,6 +1,14 @@
 package consts
 
+import (
+	"encoding/json"
+)
+
 type TipoServico string
+type Language struct {
+	Codigo    TipoServico
+	Descricao string
+}
 
 const (
 	SERVICE_PAC_41068                                      TipoServico = "41068"
@@ -54,200 +62,213 @@ const (
 	SERVICE_CARTA_REGISTRADA_AGENCIA_80250 TipoServico = "80250"
 )
 
-/*
-const servicesJson json := `[
-	{
-		"codigo": "41068",
-		"descricao": "PAC",
-	},
-	{
-		"codigo": "04510",
-		"descricao": "PAC",
-	},
-	{
-		"codigo": "41300",
-		"descricao": "PAC",
-	},
-	{
-		"codigo": "04693",
-		"descricao": "PAC",
-	},
-	{
-		"codigo": "04812",
-		"descricao": "PAC",
-	},
-	{
-		"codigo": "41556",
-		"descricao": "SEDEX",
-	},
-	{
-		"codigo":40169,
-		"descricao": "SEDEX 12",
-	},
-	{
-		"codigo":40215,
-		"descricao": "SEDEX_10",
-		},
-	{
-		"codigo":03140,
-		"descricao": "SEDEX_12",
-		},
-	{
-		"codigo":03158,
-		"descricao": "SERVICE_SEDEX_10_CONTRATO_AGENCIA_03158",
-		},
-	{
-		"codigo":40886,
-		"descricao": "SERVICE_SEDEX_10_PACOTE",
-		},
-	{
-		"codigo":40290,
-		"descricao": "SERVICE_SEDEX_HOJE_40290",
-		},
-	{
-		"codigo":40878,
-		"descricao": "SERVICE_SEDEX_HOJE_40878",
-		},
-	{
-		"codigo":04014,
-		"descricao": "SERVICE_SEDEX_A_VISTA",
-		},
-	{
-		"codigo":40045,
-		"descricao": "SERVICE_SEDEX_VAREJO_A_COBRAR",
-		},
-	{
-		"codigo":41009,
-		"descricao": "SERVICE_SEDEX_AGRUPADO",
-	},
-	{
-		"codigo":40380,
-		"descricao": "SERVICE_SEDEX_REVERSO",
-		},
-	{
-		"codigo":04189,
-		"descricao": "SERVICE_SEDEX_PAGAMENTO_NA_ENTREGA",
-		},
-	{
-		"codigo":04316,
-		"descricao": "SERVICE_SEDEX_CONTRATO_UO",
-		},
-	{
-		"codigo":04685,
-		"descricao": "SERVICE_PAC_PAGAMENTO_NA_ENTREGA",
-	},
-	{
-		"codigo":10065,
-		"descricao": "SERVICE_CARTA_COMERCIAL_A_FATURAR",
-	},
-	{
-		"codigo":10014,
-		"descricao": "SERVICE_CARTA_REGISTRADA",
-		},
-	{
-		"codigo":04162,
-		"descricao": "SERVICE_SEDEX_CONTRATO_AGENCIA",
-	},
-	{
-		"codigo":04669,
-		"descricao": "SERVICE_PAC_CONTRATO_AGENCIA",
-		},
-	{
-		"codigo":04170,
-		"descricao": "SERVICE_SEDEX_REVERSO_CONTRATO_AGENCIA",
-		},
-	{
-		"codigo":04677,
-		"descricao": "SERVICE_PAC_REVERSO_CONTRATO_AGENCIA",
-		},
-	{
-		"codigo":12556,
-		"descricao": "SERVICE_CARTA_COM_A_FATURAR_SELO_E_SE",
-		},
-	{
-		"codigo":10707,
-		"descricao": "SERVICE_CARTA_COMERCIAL_REGISTRADA_CTR_EP_MAQ_FRAN",
-		},
-	{
-		"codigo":04227,
-		"descricao": "SERVICE_MINI_ENVIOS_04227",
-		},
-	{
-		"codigo":04235,
-		"descricao": "SERVICE_MINI_ENVIOS_04235",
-		},
-	{
-		"codigo":04391,
-		"descricao": "SERVICE_MINI_ENVIOS_04391",
-		},
-	{
-		"codigo":04146,
-		"descricao": "SERVICE_SEDEX_CONTRATO_GRANDES_FORMATOS_LM",
-		},
-	{
-		"codigo":04154,
-		"descricao": "SERVICE_SEDEX_CONTRATO_AGENCIA_LM",
-		},
-	{
-		"codigo":04243,
-		"descricao": "SERVICE_SEDEX_REVERSO_LM",
-	},
-	{
-		"codigo":04278,
-		"descricao": "SERVICE_SEDEX_CONTRATO_UO_LM",
-		},
-	{
-		"codigo":04883,
-			"descricao": "SERVICE_PAC_CONTRATO_GRANDES_FORMATOS_LM",
-		},
-	{
-		"codigo":04367,
-			"descricao": "SERVICE_PAC_CONTRATO_AGENCIA_LM",
-		},
-	{
-		"codigo":04375,
-			"descricao": "SERVICE_PAC_REVERSO_LM",
-		},
-	{
-		"codigo":04332,
-			"descricao": "SERVICE_PAC_CONTRATO_UO_LM",
-		},
-	{
-		"codigo":04151,
-			"descricao": "SERVICE_SEDEX_CONTRATO_AGENCIA_PAGAMENTO_NA_ENTREGA_LM",
-		},
-	{
-		"codigo":04308,
-	"descricao": "SERVICE_PAC_CONTRATO_AGENCIA_PAGAMENTO_NA_ENTREGA_LM",
-	},
-	{
-		"codigo":04553,
-	"descricao": "SERVICE_SEDEX_CONTRATO_AGENCIA_TA",
-	},
-	{
-		"codigo":04596,
-	"descricao": "SERVICE_PAC_CONTRATO_AGENCIA_TA",
-	},
-	{
-	"codigo":03298,
-	"descricao": "SERVICE_PAC_CONTRATO_AGENCIA_03298",
-	},
-	{
-	"codigo":03220,
-	"descricao": "SERVICE_SEDEX_CONTRATO_AGENCIA_03220",
-	},
-	{
-	"codigo":03085,
-	"descricao": "SERVICE_PAC_CONTRATO_AGENCIA_03085",
-	},
-	{
-	"codigo":03050,
-	"descricao": "SERVICE_SEDEX_CONTRATO_AGENCIA_03050",
-	},
-	{
-	"codigo":80250,
-	"descricao": "SERVICE_CARTA_REGISTRADA_AGENCIA_80250",
-	}
-]`
+func GetServiceDescription(codigo TipoServico) string {
 
-*/
+	servicesJson := `[
+		{
+		"codigo": "41068",
+		"descricao": "PAC"
+		},
+		{
+			"codigo": "04510",
+			"descricao": "PAC"
+		},
+		{
+			"codigo": "41300",
+			"descricao": "PAC"
+		},
+		{
+			"codigo": "04693",
+			"descricao": "PAC"
+		},
+		{
+			"codigo": "04812",
+			"descricao": "PAC"
+		},
+		{
+			"codigo": "41556",
+			"descricao": "SEDEX"
+		},
+		{
+			"codigo": "40169",
+			"descricao": "SEDEX 12"
+		},
+		{
+		"codigo":"40215",
+		"descricao": "SEDEX 10"
+		},
+		{
+		"codigo":"03140",
+		"descricao": "SEDEX 12"
+		},
+		{
+		"codigo":"03158",
+		"descricao": "SEDEX 10"
+		},
+		{
+		"codigo":"40886",
+		"descricao": "SEDEX 10 PACOTE"
+		},
+		{
+		"codigo":"40290",
+		"descricao": "SEDEX HOJE"
+		},
+		{
+			"codigo":"40878",
+			"descricao": "SEDEX HOJE"
+		},
+		{
+		"codigo":"04014",
+		"descricao": "SEDEX A VISTA"
+		},
+		{
+		"codigo":"40045",
+		"descricao": "SEDEX VAREJO A COBRAR"
+		},
+		{
+			"codigo":"41009",
+			"descricao": "SEDEX AGRUPADO"
+		},
+		{
+		"codigo":"40380",
+		"descricao": "SEDEX REVERSO"
+		},
+		{
+		"codigo":"04189",
+		"descricao": "SEDEX PAGAMENTO NA ENTREGA"
+		},
+		{
+		"codigo":"04316",
+		"descricao": "SEDEX UO"
+		},
+		{
+		"codigo":"04685",
+		"descricao": "PAC PAGAMENTO NA ENTREGA"
+		},
+		{
+			"codigo":"10065",
+			"descricao": "CARTA COMERCIAL A FATURAR"
+		},
+		{
+		"codigo":"10014",
+		"descricao": "CARTA REGISTRADA"
+		},
+		{
+			"codigo":"04162",
+			"descricao": "SEDEX"
+		},
+		{
+		"codigo":"04669",
+		"descricao": "PAC"
+		},
+		{
+		"codigo":"04170",
+		"descricao": "SEDEX REVERSO"
+		},
+		{
+		"codigo":"04677",
+		"descricao": "PAC REVERSO"
+		},
+		{
+		"codigo":"12556",
+		"descricao": "CARTA COM A FATURAR SELO E SE"
+		},
+		{
+		"codigo":"10707",
+		"descricao": "CARTA COMERCIAL REGISTRADA CTR EP MAQ FRAN"
+		},
+		{
+		"codigo":"04227",
+		"descricao": "MINI ENVIOS"
+		},
+		{
+		"codigo":"04235",
+		"descricao": "MINI ENVIOS"
+		},
+		{
+		"codigo":"04391",
+		"descricao": "MINI ENVIOS"
+		},
+		{
+		"codigo":"04146",
+		"descricao": "SEDEX GRANDES FORMATOS LM"
+		},
+		{
+		"codigo":"04154",
+		"descricao": "SEDEX LM"
+		},
+		{
+		"codigo":"04243",
+		"descricao": "SEDEX REVERSO LM"
+		},
+		{
+		"codigo":"04278",
+		"descricao": "SEDEX UO LM"
+		},
+		{
+		"codigo":"04883",
+			"descricao": "PAC GRANDES FORMATOS LM"
+		},
+		{
+		"codigo":"04367",
+			"descricao": "PAC LM"
+		},
+		{
+		"codigo":"04375",
+			"descricao": "PAC REVERSO LM"
+		},
+		{
+		"codigo":"04332",
+			"descricao": "PAC UO LM"
+		},
+		{
+		"codigo":"04151",
+		"descricao": "SEDEX PAGAMENTO NA ENTREGA LM"
+		},
+		{
+		"codigo":"04308",
+		"descricao": "PAC PAGAMENTO NA ENTREGA LM"
+		},
+		{
+		"codigo":"04553",
+		"descricao": "SEDEX TA"
+		},
+		{
+		"codigo":"04596",
+		"descricao": "PAC TA"
+		},
+		{
+		"codigo":"03298",
+		"descricao": "PAC"
+		},
+		{
+		"codigo":"03220",
+		"descricao": "SEDEX"
+		},
+		{
+		"codigo":"03085",
+		"descricao": "PAC"
+		},
+		{
+		"codigo":"03050",
+		"descricao": "SEDEX"
+		},
+		{
+		"codigo":"80250",
+		"descricao": "CARTA REGISTRADA"
+		}
+]`
+	bytes := []byte(servicesJson)
+	var services []Language
+	err := json.Unmarshal(bytes, &services)
+	if err != nil {
+		panic(err)
+	}
+	var descricao string
+	for l := range services {
+		if services[l].Codigo == codigo {
+			descricao = services[l].Descricao
+		}
+	}
+	return descricao
+}
